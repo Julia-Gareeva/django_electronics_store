@@ -8,6 +8,10 @@ from django_electronics_store.links.models.products import Products
 from django_electronics_store.links.models.supplier import Supplier
 
 
+# Функционал admin панели выполнен не полностью:
+#
+# очистка задолженности
+# ссылка на поставщиков
 class BaseAdmin(admin.ModelAdmin):
     """Базовая админ панель."""
     list_display = ("name", "contacts", "products", "staff", "supplier", "arrears", "date")
