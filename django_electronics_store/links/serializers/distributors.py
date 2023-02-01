@@ -1,5 +1,5 @@
-from django_electronics_store.links.models import Distributors
-from django_electronics_store.links.serializers.factories import FactoriesListSerializer, FactoriesDetailSerializer, \
+from links.models import Distributors
+from links.serializers.factories import FactoriesListSerializer, FactoriesDetailSerializer, \
     FactoriesCreateSerializer, FactoriesUpdateSerializer
 
 

@@ -3,9 +3,8 @@ from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView,
 from rest_framework import permissions, filters
 from rest_framework.pagination import LimitOffsetPagination
 
-from django_electronics_store.links.models import Factories
-from django_electronics_store.links.permissions import FactoriesPermissions
-from django_electronics_store.links.serializers import FactoriesCreateSerializer, FactoriesSerializer
+from links.models.factories import Factories
+from links.serializers.factories import FactoriesCreateSerializer, FactoriesListSerializer, FactoriesUpdateSerializer
 
 
 # 4. Используя DRF, создать набор представлений:
@@ -26,7 +25,7 @@ class FactoriesCreateView(CreateAPIView):
 class FactoriesListView(ListAPIView):
     model = Factories
     permission_classes = [permissions.IsAuthenticated]
-    serializer_class = FactoriesSerializer
+    serializer_class = FactoriesListSerializer
     pagination_class = LimitOffsetPagination
     filter_backends = [
         filters.OrderingFilter,
@@ -44,7 +43,7 @@ class FactoriesListView(ListAPIView):
 
 class FactoriesView(RetrieveUpdateDestroyAPIView):
     model = Factories
-    serializer_class = FactoriesSerializer
+    serializer_class = FactoriesUpdateSerializer
     permission_classes = [permissions.IsAuthenticated, FactoriesPermissions]
 
     def get_queryset(self):

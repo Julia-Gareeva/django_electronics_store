@@ -1,7 +1,7 @@
 from django.db import models
 
-from django_electronics_store.users.models import User
-from django_electronics_store.links.models import Factories
+from users.models import User
+from links.models import Factories
 
 
 class FactoriesParticipant(models.Model):

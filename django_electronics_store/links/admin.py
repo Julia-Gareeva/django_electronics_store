@@ -1,22 +1,32 @@
 from django.contrib import admin
 
-from django_electronics_store.links.models import Factories, Distributors, Dealerships, \
+from links.models import Factories, Distributors, Dealerships, \
     RetailChains, IndividualEntrepreneurs
-from django_electronics_store.links.models.address import Address
-from django_electronics_store.links.models.contacts import Contacts
-from django_electronics_store.links.models.products import Products
-from django_electronics_store.links.models.supplier import Supplier
+from links.models.address import Address
+from links.models.contacts import Contacts
+from links.models.products import Products
+from links.models.supplier import Supplier
 
 
 # Функционал admin панели выполнен не полностью:
 #
 # очистка задолженности
 # ссылка на поставщиков
+
+# На странице объекта сети добавить:
+#
+# ссылку на «Поставщика»;
+# фильтр по названию города;
+# «admin action», очищающий задолженность перед поставщиком у выбранных объектов.
 class BaseAdmin(admin.ModelAdmin):
     """Базовая админ панель."""
     list_display = ("name", "contacts", "products", "staff", "supplier", "arrears", "date")
     search_fields = ("name", "products", "arrears", "date")
-    readonly_fields = ("contacts", "staff", "supplier", "arrears")
+    read_only_fields = ("contacts", "staff", "supplier", "arrears")
+
+    def get_queryset(self, request):
+        queryset = Factories.objects.get(supplier__factories="supplier")
+        return queryset
 
 
 class FactoriesAdmin(BaseAdmin):

@@ -1,6 +1,6 @@
 from rest_framework import permissions
 
-from django_electronics_store.links.models.participant import FactoriesParticipant
+from links.models.participant import FactoriesParticipant
 
 
 class BasePermissionMixin(permissions.IsAuthenticated):

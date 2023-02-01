@@ -1,6 +1,6 @@
 from django.db import models
 
-from django_electronics_store.links.models.address import Address
+from links.models.address import Address
 
 
 class Contacts(models.Model):

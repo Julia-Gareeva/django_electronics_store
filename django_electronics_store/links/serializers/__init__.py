@@ -1,33 +1,18 @@
-from .dealerships import DealershipsSerializer, DealershipsCreateSerializer, DealershipsDeleteSerializer
-from .distributors import DistributorsSerializer, DistributorsCreateSerializer, DistributorsDeleteSerializer
-from .factories import FactoriesSerializer, FactoriesCreateSerializer, FactoriesDeleteSerializer, ProductsSerializer, \
-    ProductsCreateSerializer, ProductsDeleteSerializer
+from .dealerships import DealershipsCreateSerializer
+from .distributors import DistributorsCreateSerializer
+from .factories import FactoriesCreateSerializer
 
-from .individual_entrepreneurs import IndividualEntrepreneursSerializer, IndividualEntrepreneursCreateSerializer, \
-    IndividualEntrepreneursDeleteSerializer
+from .individual_entrepreneurs import IndividualEntrepreneursCreateSerializer
 
-from .retail_chains import RetailChainsSerializer, RetailChainsCreateSerializer, RetailChainsDeleteSerializer
+from .retail_chains import RetailChainsCreateSerializer
 
 from .supplier import SupplierSerializer
 
 __all__ = [
-    "FactoriesSerializer",
     "FactoriesCreateSerializer",
-    "FactoriesDeleteSerializer",
-    "ProductsSerializer",
-    "ProductsCreateSerializer",
-    "ProductsDeleteSerializer",
-    "DistributorsSerializer",
     "DistributorsCreateSerializer",
-    "DistributorsDeleteSerializer",
-    "DealershipsSerializer",
     "DealershipsCreateSerializer",
-    "DealershipsDeleteSerializer",
-    "RetailChainsSerializer",
     "RetailChainsCreateSerializer",
-    "RetailChainsDeleteSerializer",
-    "IndividualEntrepreneursSerializer",
     "IndividualEntrepreneursCreateSerializer",
-    "IndividualEntrepreneursDeleteSerializer",
     "SupplierSerializer",
 ]

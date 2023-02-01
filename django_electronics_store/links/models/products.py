@@ -10,7 +10,7 @@ class Products(models.Model):
     name = models.CharField(verbose_name="Название", max_length=200)
     model = models.TextField(verbose_name="Модель", max_length=80)
     date_release_to_market = models.DateTimeField(verbose_name="Дата выхода продукта на рынок",
-                                                  auto_now_add=True, input_formats=['%m/%d/%y %H:%M'])
+                                                  auto_now_add=True) # input_formats=["%m/%d/%y %H:%M"]
 
     def __str__(self):
         return self.name

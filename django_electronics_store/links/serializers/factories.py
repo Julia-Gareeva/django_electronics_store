@@ -1,15 +1,13 @@
 from rest_framework import serializers
 from django.db import transaction
 
-from django_electronics_store.links.models import Factories
-from django_electronics_store.links.models.participant import FactoriesParticipant
-from django_electronics_store.users.models import User
+from links.models import Factories
+from links.models.participant import FactoriesParticipant
+from users.models import User
 
 
 class FactoriesDetailSerializer(serializers.Serializer):
     """Сериализация одного объекта сети 'Завод'."""
-    factories = FactoriesParticipant.factories.name
-    # factories = FactoriesParticipant.VerboseName.choices
 
     class Meta:
         model = Factories
@@ -19,8 +17,6 @@ class FactoriesDetailSerializer(serializers.Serializer):
 
 class FactoriesListSerializer(serializers.ModelSerializer):
     """Сериализация списка объекта сети 'Завод'."""
-    factories = FactoriesParticipant.factories.name
-    # factories = FactoriesParticipant.VerboseName.choices
 
     class Meta:
         model = Factories

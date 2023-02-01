@@ -1,8 +1,8 @@
 from django.db import models
 
-from django_electronics_store.links.models.contacts import Contacts
-from django_electronics_store.links.models.products import Products
-from django_electronics_store.links.models.supplier import Supplier
+from links.models.contacts import Contacts
+from links.models.products import Products
+from links.models.supplier import Supplier
 
 
 class Factories(models.Model):
@@ -17,7 +17,7 @@ class Factories(models.Model):
     staff = models.TextField(verbose_name="Сотрудники")
     supplier = models.ManyToManyField(Supplier, verbose_name="Поставщик")
     arrears = models.FloatField(verbose_name="Задолженность перед поставщиком")
-    date = models.DateTimeField(verbose_name="Время создания", auto_now_add=True, input_formats=['%m/%d/%y %H:%M'])
+    date = models.DateTimeField(verbose_name="Время создания", auto_now_add=True) # input_formats=['%m/%d/%y %H:%M']
 
     def __str__(self):
         return self.name

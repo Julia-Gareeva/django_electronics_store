@@ -1,8 +1,5 @@
 from django.db import models
 
-from django_electronics_store.links.models import Factories, Distributors, Dealerships, RetailChains, \
-    IndividualEntrepreneurs
-
 
 class Supplier(models.Model):
     """Описание модели поставщики."""
@@ -10,9 +7,18 @@ class Supplier(models.Model):
         verbose_name = "Поставщик"
         verbose_name_plural = "Поставщики"
 
-    id_supplier = models.ManyToManyField(Factories.Meta.verbose_name, Distributors.Meta.verbose_name,
-                                         Dealerships.Meta.verbose_name, RetailChains.Meta.verbose_name,
-                                         IndividualEntrepreneurs.Meta.verbose_name, verbose_name="ID поставщика")
-    name = models.ManyToManyField(Factories.name, Distributors.name, Dealerships.name,
-                                  RetailChains.name, IndividualEntrepreneurs.name,
-                                  verbose_name="Название поставщика")
+    FACTORY = "Factory"
+    DISTRIBUTOR = "Distributor"
+    DEALERSHIP = "Dealership"
+    RETAILCHAIN = "Retailchain"
+    INDIVIDUALENTREPRENEUR = "Individualentrepreneur"
+
+    SUPPLIER_NAME = [
+        (FACTORY, "Завод"),
+        (DISTRIBUTOR, "Дистрибьютор"),
+        (DEALERSHIP, "Дилерский центр", ),
+        (RETAILCHAIN, "Крупная розничная сеть"),
+        (INDIVIDUALENTREPRENEUR, "Индивидуальный предприниматель")
+    ]
+
+    name = models.TextField(verbose_name="Название поставщика", max_length=33, choices=SUPPLIER_NAME, default=FACTORY)
