@@ -7,18 +7,13 @@ class Supplier(models.Model):
         verbose_name = "Поставщик"
         verbose_name_plural = "Поставщики"
 
-    FACTORY = "Factory"
-    DISTRIBUTOR = "Distributor"
-    DEALERSHIP = "Dealership"
-    RETAILCHAIN = "Retailchain"
-    INDIVIDUALENTREPRENEUR = "Individualentrepreneur"
+    class NameSupplier(models.IntegerChoices):
+        factory = 1, "Завод"
+        distributor = 2, "Дистрибьютор"
+        dealership = 3, "Дилерский центр"
+        retailchain = 4, "Крупная розничная сеть"
+        individualentrepreneur = 5, "Индивидуальный предприниматель"
 
-    SUPPLIER_NAME = [
-        (FACTORY, "Завод"),
-        (DISTRIBUTOR, "Дистрибьютор"),
-        (DEALERSHIP, "Дилерский центр", ),
-        (RETAILCHAIN, "Крупная розничная сеть"),
-        (INDIVIDUALENTREPRENEUR, "Индивидуальный предприниматель")
-    ]
-
-    name = models.TextField(verbose_name="Название поставщика", max_length=33, choices=SUPPLIER_NAME, default=FACTORY)
+    name = models.PositiveSmallIntegerField(verbose_name="Название поставщика", max_length=33,
+                                            choices=NameSupplier.choices, default=NameSupplier.factory)
+    is_deleted = models.BooleanField(verbose_name="Удален", default=False)
